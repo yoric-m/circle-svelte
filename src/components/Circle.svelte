@@ -10,6 +10,11 @@
   const elt = document.querySelector(".hit");
   const newPos = () => {
     //elt.style.display = "none";
+    const circ = document.querySelector(".circle");
+    if (circ) {
+      circ.classList.remove("smaller");
+    }
+
     radius = 100 + Math.round(Math.random() * 200);
     pos = {
       x: Math.round(Math.random() * (width - radius * 2)),
@@ -31,6 +36,9 @@
     elt.style.left = event.x - 0 + "px";
     elt.style.top = event.y - 0 + "px";
     elt.style.display = "block";
+
+    const circ = document.querySelector(".circle");
+    circ.classList.add("smaller");
     //elt.classList.remove("run-animation");
     //void elt.offsetWidth;
 
@@ -46,14 +54,14 @@
   on:click={handleClick}
   class="circle "
   style="--xpx:{xpx};--ypx:{ypx};--radiuspx:{radiuspx};"
->
-  <div id="clc" />
-</div>
+/>
+<div id="clc" />
 
 <style>
   .circle {
     border-radius: 50%;
-    border: 1px solid black;
+    border: 2px solid black;
+    background-color: red;
     position: absolute;
     left: var(--xpx);
     top: var(--ypx);

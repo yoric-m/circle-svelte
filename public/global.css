@@ -73,16 +73,27 @@ button:focus {
 
   position: fixed;
   background-color: black;
-  animation: bigger 0.5s linear;
+  animation: bigger 1s linear;
+}
+.smaller {
+  animation: move-small 1s cubic-bezier(0.115, 0.54, 0, 0.79);
 }
 .run-animation {
   animation: bigger 0.3s linear;
 }
 @keyframes bigger {
   0% {
-    transform: scale(20, 20);
+    transform: scale(5, 5);
   }
   100% {
+    transform: scale(5, 5);
+  }
+}
+@keyframes move-small {
+  0% {
     transform: scale(1, 1);
+  }
+  100% {
+    transform: scale(0, 0);
   }
 }
