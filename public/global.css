@@ -73,10 +73,19 @@ button:focus {
 
   position: fixed;
   background-color: black;
-  animation: bigger 1s linear;
+  animation: bigger 1.5s linear;
+}
+.score {
+  position: fixed;
+  font-size: 64px;
+  font-weight: 500;
+  color: blue;
+  animation: rotator 1s linear;
+  animation-fill-mode: forwards;
 }
 .smaller {
-  animation: move-small 1s cubic-bezier(0.115, 0.54, 0, 0.79);
+  animation: move-small 1s cubic-bezier(0.19, 1.71, 0.25, 0.33);
+  animation-fill-mode: forwards;
 }
 .run-animation {
   animation: bigger 0.3s linear;
@@ -95,5 +104,13 @@ button:focus {
   }
   100% {
     transform: scale(0, 0);
+  }
+}
+@keyframes rotator {
+  0% {
+    transform: rotate(0deg) scale(0.2, 0.2);
+  }
+  100% {
+    transform: rotate(360deg) scale(1, 1) translate(100px, -100px);
   }
 }

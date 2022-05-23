@@ -1,7 +1,7 @@
 <script>
-  let pos = {};
-  let xpx,
-    ypx = "";
+  let pos = { x: 300, y: 100 };
+  let xpx = "300px";
+  let ypx = "100px";
   let radius = 100;
   let radiuspx = `${radius}px`;
   let hit = false;
@@ -13,6 +13,11 @@
     const circ = document.querySelector(".circle");
     if (circ) {
       circ.classList.remove("smaller");
+    }
+    const score = document.querySelector(".score");
+    if (score) {
+      score.innerHTML = "";
+      score.classList.remove("score");
     }
 
     radius = 100 + Math.round(Math.random() * 200);
@@ -31,11 +36,24 @@
   const handleClick = (event) => {
     hit = true;
     const elt = document.querySelector("#clc");
+    const txt = document.querySelector("#txt");
 
     elt.classList.add("hit");
     elt.style.left = event.x - 0 + "px";
     elt.style.top = event.y - 0 + "px";
     elt.style.display = "block";
+    console.log(pos.x + radius / 2 + " " + event.x);
+    let tot = Math.round(
+      Math.sqrt(
+        Math.pow(pos.x + radius / 2 - event.x, 2) +
+          Math.pow(pos.y + radius / 2 - event.y, 2)
+      )
+    );
+
+    txt.classList.add("score");
+    txt.style.left = event.x - 0 + "px";
+    txt.style.top = event.y - 0 + "px";
+    txt.innerHTML = tot;
 
     const circ = document.querySelector(".circle");
     circ.classList.add("smaller");
@@ -45,7 +63,7 @@
     setTimeout(() => {
       elt.style.display = "none";
       newPos();
-    }, 1000);
+    }, 2000);
   };
 </script>
 
@@ -56,6 +74,7 @@
   style="--xpx:{xpx};--ypx:{ypx};--radiuspx:{radiuspx};"
 />
 <div id="clc" />
+<div id="txt" />
 
 <style>
   .circle {
